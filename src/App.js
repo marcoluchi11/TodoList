@@ -5,7 +5,10 @@ function App() {
   return (
     <TodoProvider>
       <div className="contenedor">
-        <AddTask />
+        <div className="addTarea">
+          <AddTask />
+        </div>
+
         <TaskList />
       </div>
     </TodoProvider>
