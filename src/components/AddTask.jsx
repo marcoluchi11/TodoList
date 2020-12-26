@@ -18,12 +18,17 @@ const BotonSubmit = styled.input`
   width: 100%;
 `;
 const Input = styled.input`
+  color: #ffffff;
   background-color: transparent;
   border-radius: 24px;
-  border: 0.5px solid black;
+  border: 0.5px solid #ffffff;
   height: 2.9rem;
   margin: 1rem;
   padding: 1rem;
+  &::placeholder {
+    font-size: 1.1rem;
+    color: #ffffff;
+  }
 `;
 const AddTask = () => {
   const {
@@ -46,8 +51,10 @@ const AddTask = () => {
       return;
     }
     setError(false);
+    const agregarTask = [...listaTareas, { id: nanoid(), tarea: tarea }];
+    localStorage.setItem("listatareas", JSON.stringify(agregarTask));
+    setListaTareas(agregarTask);
 
-    setListaTareas([...listaTareas, { id: nanoid(), tarea: tarea }]);
     setTareaNueva({ tarea: "" });
   };
   return (
@@ -61,7 +68,7 @@ const AddTask = () => {
           placeholder="Añade una tarea..."
           value={tarea}
         />
-
+        {error ? <Error /> : null}
         <BotonSubmit
           onClick={handleClick}
           className="addTask"
@@ -69,7 +76,6 @@ const AddTask = () => {
           value=" + Añadir Tarea"
         />
       </form>
-      {error ? <Error /> : null}
     </Fragment>
   );
 };

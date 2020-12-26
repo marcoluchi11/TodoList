@@ -17,7 +17,9 @@ const Boton = styled.button`
 const TaskList = () => {
   const { listaTareas, setListaTareas } = useContext(TodoContext);
   const handleClick = (id) => {
-    setListaTareas(listaTareas.filter((tarea) => id !== tarea.id));
+    const tasklist = listaTareas.filter((tarea) => id !== tarea.id);
+    localStorage.setItem("listatareas", JSON.stringify(tasklist));
+    setListaTareas(tasklist);
   };
   return (
     <Fragment>
