@@ -8,8 +8,9 @@ function App() {
         <div className="addTarea">
           <AddTask />
         </div>
-
-        <TaskList />
+        <div className="contenedorLista">
+          <TaskList />
+        </div>
       </div>
     </TodoProvider>
   );
