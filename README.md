@@ -1,8 +1,6 @@
 Projecto Todo App para practicar React.
 
-Link al proyecto:
-
-# AVERIGUAR LO DE LOCAL STORAGE
+Link al proyecto: https://crealistatareas.web.app/
 
 # VER AUTENTICACION DE USUARIOS , FIREBASE ? ACCESO A DB
 
