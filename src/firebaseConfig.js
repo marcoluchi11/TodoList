@@ -1,6 +1,6 @@
 import firebase from "firebase";
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_APIKEY,
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "crealistatareas.firebaseapp.com",
   projectId: "crealistatareas",
   storageBucket: "crealistatareas.appspot.com",
