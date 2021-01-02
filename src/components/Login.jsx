@@ -1,9 +1,11 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import LoginCompletado from "./LoginCompletado";
 import fire from "./../firebaseConfig";
+import { TodoContext } from "./../context/TodoContext";
 import Formulario from "./Formulario";
 const Login = () => {
-  const [user, setUser] = useState("");
+  const { setRegistrado } = useContext(TodoContext);
+  //const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -51,6 +53,10 @@ const Login = () => {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        clearInputs();
+        setRegistrado(true);
+      })
       .catch((err) => {
         switch (err.code) {
           case "auth/email-already-in-use":
@@ -62,7 +68,7 @@ const Login = () => {
             setPasswordError("error pass");
             break;
           default:
-            console.log("tuvieja");
+            console.log("Registrado con Exito");
         }
       });
   };
@@ -73,19 +79,19 @@ const Login = () => {
     console.log("te deslogueaste tato");
   };
 
-  const authListener = () => {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        clearInputs();
-        setUser(user);
-      } else {
-        setUser("");
-      }
-    });
-  };
-  useEffect(() => {
-    //authListener();
-  }, []);
+  // const authListener = () => {
+  //   fire.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       clearInputs();
+  //       setUser(user);
+  //     } else {
+  //       setUser("");
+  //     }
+  //   });
+  // };
+  // useEffect(() => {
+  //   //   authListener();
+  // }, []);
   return (
     <Fragment>
       {login ? (

@@ -1,5 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import styled from "@emotion/styled";
+import { TodoContext } from "../context/TodoContext";
+import RegistroCompletado from "./RegistroCompletado";
 const Label = styled.label`
   margin: 1rem;
 `;
@@ -18,6 +20,13 @@ const ErrorMsg = styled.p`
   padding: 0.6rem;
   border-radius: 10px;
   background-color: #eaeaea2b;
+`;
+const RegistroMsg = styled.div`
+  color: #ffffff;
+  font-size: 16px;
+  padding: 0.6rem;
+  border-radius: 10px;
+  background-color: #28cc20;
 `;
 const Input = styled.input`
   border-radius: 10px;
@@ -43,6 +52,7 @@ const Formulario = ({
   passwordError,
   emailError,
 }) => {
+  const { registrado, setRegistrado } = useContext(TodoContext);
   return (
     <Fragment>
       <form>
@@ -86,6 +96,14 @@ const Formulario = ({
       )}
       {passwordError ? <ErrorMsg>{passwordError}</ErrorMsg> : null}
       {emailError ? <ErrorMsg>{emailError}</ErrorMsg> : null}
+      {registrado ? (
+        <RegistroMsg>
+          <RegistroCompletado
+            setTieneCuenta={setTieneCuenta}
+            setRegistrado={setRegistrado}
+          />
+        </RegistroMsg>
+      ) : null}
     </Fragment>
   );
 };
