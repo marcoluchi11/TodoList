@@ -10,6 +10,7 @@ const TodoProvider = (props) => {
   });
   const [registrado, setRegistrado] = useState(false);
   const [error, setError] = useState(false);
+  const [usuario, setUsuario] = useState(false);
   return (
     <TodoContext.Provider
       value={{
@@ -17,10 +18,12 @@ const TodoProvider = (props) => {
         listaTareas,
         error,
         registrado,
+        usuario,
         setTareaNueva,
         setListaTareas,
         setError,
         setRegistrado,
+        setUsuario,
       }}
     >
       {props.children}
