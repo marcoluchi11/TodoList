@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useEffect, useContext } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import LoginCompletado from "./LoginCompletado";
 import fire from "./../firebaseConfig";
 import { TodoContext } from "./../context/TodoContext";
 import Formulario from "./Formulario";
 const Login = () => {
-  const { setRegistrado } = useContext(TodoContext);
+  const { setRegistrado, setUsuario } = useContext(TodoContext);
   //const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +21,23 @@ const Login = () => {
     setEmail("");
     setPassword("");
   };
+  // const saveTask = (user) => {
+  //   const record = {
+  //     user: user.uid,
+  //     task: "Tu vieja",
+  //   };
+  //   const db = fire.firestore();
+
+  //   //AGREGA RECORD A LA DATABASE
+  //   db.collection("tareas")
+  //     .add(record)
+  //     .then(() => {
+  //       console.log("agregaste correctamente a la Database Tato");
+  //     })
+  //     .catch(function (error) {
+  //       console.error("Error adding document: ", error);
+  //     });
+  // };
   const handleLogin = (e) => {
     e.preventDefault();
     clearErrors();
@@ -28,8 +45,9 @@ const Login = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        console.log("te logueaste con exito mostro");
         setLogin(true);
+        setUsuario(true);
+        //   saveTask(fire.auth().currentUser);
       })
       .catch((err) => {
         switch (err.code) {
@@ -77,6 +95,7 @@ const Login = () => {
     setLogin(false);
     fire.auth().signOut();
     console.log("te deslogueaste tato");
+    setUsuario(false);
   };
 
   // const authListener = () => {
@@ -119,3 +138,13 @@ const Login = () => {
 };
 
 export default Login;
+
+// EL USUARIO INGRESA
+
+// SE BUSCAN TAREAS DE SU UID EN DATABASE
+
+// SE MUESTRAN EN PANTALLA
+
+// SE ELIMINAN O SE AGREGAN Y ESO IMPACTA EN DATABASE
+
+// CUANDO SE DESLOGUEA SE BORRA TODO

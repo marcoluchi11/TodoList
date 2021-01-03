@@ -38,6 +38,7 @@ const AddTask = () => {
     setListaTareas,
     error,
     setError,
+    usuario,
   } = useContext(TodoContext);
 
   const { tarea } = tareaNueva;
@@ -47,6 +48,10 @@ const AddTask = () => {
   const handleClick = (e) => {
     e.preventDefault();
     if (tarea.trim() === "") {
+      setError(true);
+      return;
+    }
+    if (usuario === false) {
       setError(true);
       return;
     }
@@ -68,7 +73,9 @@ const AddTask = () => {
           placeholder="Añade una tarea..."
           value={tarea}
         />
-        {error ? <Error /> : null}
+        {error ? (
+          <Error mensaje="Ingrese algun valor valido" usuario={usuario} />
+        ) : null}
         <BotonSubmit
           onClick={handleClick}
           className="addTask"

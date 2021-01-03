@@ -7,8 +7,11 @@ const Mensaje = styled.p`
   margin: 0.5rem;
   border-radius: 5px;
 `;
-const Error = () => {
-  return <Mensaje>Ingresa algun valor</Mensaje>;
+const Error = ({ mensaje, usuario }) => {
+  if (usuario === false) {
+    return <Mensaje>Ingrese o registrese antes de agregar tareas</Mensaje>;
+  }
+  return <Mensaje>{mensaje}</Mensaje>;
 };
 
 export default Error;
