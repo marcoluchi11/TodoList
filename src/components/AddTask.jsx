@@ -1,10 +1,14 @@
 import React, { Fragment, useContext } from "react";
 import styled from "@emotion/styled";
 import Error from "./Error";
+import fire from "./../firebaseConfig";
 import { nanoid } from "nanoid";
 import { TodoContext } from "./../context/TodoContext";
 const BotonSubmit = styled.input`
   background-color: #008cba;
+  &:hover {
+    background-color: #007399;
+  }
   font-size: 1.3rem;
   padding: 1rem;
   color: #ffffff;
@@ -39,6 +43,7 @@ const AddTask = () => {
     error,
     setError,
     usuario,
+    user,
   } = useContext(TodoContext);
 
   const { tarea } = tareaNueva;
@@ -61,6 +66,20 @@ const AddTask = () => {
     setListaTareas(agregarTask);
 
     setTareaNueva({ tarea: "" });
+    const record = {
+      id: user,
+      tarea: tareaNueva.tarea,
+    };
+    const db = fire.firestore();
+
+    db.collection("tareas")
+      .add(record)
+      .then(() => {
+        console.log("agregaste correctamente a la Database Tato");
+      })
+      .catch((err) => {
+        console.error("Error adding document: ", err);
+      });
   };
   return (
     <Fragment>
