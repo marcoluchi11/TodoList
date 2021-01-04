@@ -16,10 +16,27 @@ const Boton = styled.button`
 `;
 const TaskList = () => {
   const { listaTareas, setListaTareas } = useContext(TodoContext);
-  const handleClick = (id) => {
+  const handleClick = (id, task) => {
     const tasklist = listaTareas.filter((tarea) => id !== tarea.id);
     localStorage.setItem("listatareas", JSON.stringify(tasklist));
-
+    const db = fire.firestore();
+    db.collection("tareas")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          if (
+            doc.data().id === fire.auth().currentUser.uid &&
+            doc.data().tarea === task
+          ) {
+            db.collection("tareas")
+              .doc(doc.id)
+              .delete()
+              .then(() => {
+                console.log("se borro correctamente tatito");
+              });
+          }
+        });
+      });
     setListaTareas(tasklist);
   };
   return (
@@ -28,7 +45,7 @@ const TaskList = () => {
       {listaTareas.map((tarea) => (
         <ItemTarea key={nanoid()}>
           <ItemTareaTexto>{tarea.tarea}</ItemTareaTexto>
-          <Boton onClick={() => handleClick(tarea.id)}>
+          <Boton onClick={() => handleClick(tarea.id, tarea.tarea)}>
             <img
               src="https://icongr.am/fontawesome/close.svg?size=23&color=currentColor"
               alt="Delete"

@@ -7,7 +7,6 @@ const Login = () => {
   const {
     setRegistrado,
     setUsuario,
-    listaTareas,
     setListaTareas,
 
     setUser,
