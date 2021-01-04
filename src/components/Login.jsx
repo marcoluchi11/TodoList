@@ -4,8 +4,15 @@ import fire from "./../firebaseConfig";
 import { TodoContext } from "./../context/TodoContext";
 import Formulario from "./Formulario";
 const Login = () => {
-  const { setRegistrado, setUsuario } = useContext(TodoContext);
-  //const [user, setUser] = useState("");
+  const {
+    setRegistrado,
+    setUsuario,
+    listaTareas,
+    setListaTareas,
+
+    setUser,
+  } = useContext(TodoContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -47,7 +54,24 @@ const Login = () => {
       .then(() => {
         setLogin(true);
         setUsuario(true);
-        //   saveTask(fire.auth().currentUser);
+        setUser(fire.auth().currentUser.uid);
+        const db = fire.firestore();
+        db.collection("tareas")
+          .get()
+          .then(function (querySnapshot) {
+            let getTareas = [];
+            querySnapshot.forEach(function (doc) {
+              // doc.data() is never undefined for query doc snapshots
+
+              if (doc.data().id === fire.auth().currentUser.uid) {
+                const task = doc.data().tarea;
+
+                getTareas.push({ tarea: task });
+              }
+            });
+            console.log(getTareas);
+            setListaTareas(getTareas);
+          });
       })
       .catch((err) => {
         switch (err.code) {

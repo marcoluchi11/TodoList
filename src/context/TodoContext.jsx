@@ -8,6 +8,8 @@ const TodoProvider = (props) => {
     const listovich = localStorage.getItem("listatareas");
     return listovich ? JSON.parse(listovich) : [];
   });
+
+  const [user, setUser] = useState("");
   const [registrado, setRegistrado] = useState(false);
   const [error, setError] = useState(false);
   const [usuario, setUsuario] = useState(false);
@@ -19,11 +21,13 @@ const TodoProvider = (props) => {
         error,
         registrado,
         usuario,
+        user,
         setTareaNueva,
         setListaTareas,
         setError,
         setRegistrado,
         setUsuario,
+        setUser,
       }}
     >
       {props.children}

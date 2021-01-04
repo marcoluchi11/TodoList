@@ -2,7 +2,7 @@ import React, { useContext, Fragment } from "react";
 import styled from "@emotion/styled";
 import { nanoid } from "nanoid";
 import { TodoContext } from "./../context/TodoContext";
-
+import fire from "./../firebaseConfig";
 const ItemTarea = styled.div`
   display: flex;
 `;
@@ -19,6 +19,7 @@ const TaskList = () => {
   const handleClick = (id) => {
     const tasklist = listaTareas.filter((tarea) => id !== tarea.id);
     localStorage.setItem("listatareas", JSON.stringify(tasklist));
+
     setListaTareas(tasklist);
   };
   return (

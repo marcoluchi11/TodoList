@@ -10,7 +10,7 @@ const BotonSalir = styled.input`
 const LoginCompletado = ({ email, handleLogout, setLogin }) => {
   return (
     <Fragment>
-      <p>Bienvenido, {email}</p>
+      <p>Bienvenide, {email}</p>
       <BotonSalir value="Salir" type="button" onClick={handleLogout} />
     </Fragment>
   );
