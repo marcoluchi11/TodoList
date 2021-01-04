@@ -8,7 +8,7 @@ const Login = () => {
     setRegistrado,
     setUsuario,
     setListaTareas,
-
+    setLoading,
     setUser,
   } = useContext(TodoContext);
 
@@ -54,6 +54,7 @@ const Login = () => {
         setLogin(true);
         setUsuario(true);
         setUser(fire.auth().currentUser.uid);
+        setLoading(true);
         const db = fire.firestore();
         db.collection("tareas")
           .get()
@@ -70,6 +71,7 @@ const Login = () => {
             });
             console.log(getTareas);
             setListaTareas(getTareas);
+            setLoading(false);
           });
       })
       .catch((err) => {
@@ -119,6 +121,7 @@ const Login = () => {
     fire.auth().signOut();
     console.log("te deslogueaste tato");
     setUsuario(false);
+    setListaTareas([]);
   };
 
   // const authListener = () => {
