@@ -5,9 +5,9 @@ import fire from "./../firebaseConfig";
 import { nanoid } from "nanoid";
 import { TodoContext } from "./../context/TodoContext";
 const BotonSubmit = styled.input`
-  background-color: #008cba;
+  background-color: #14274e;
   &:hover {
-    background-color: #007399;
+    background-color: #394867;
   }
   font-size: 1.3rem;
   padding: 1rem;
@@ -22,16 +22,16 @@ const BotonSubmit = styled.input`
   width: 100%;
 `;
 const Input = styled.input`
-  color: #ffffff;
+  color: #14274e;
   background-color: transparent;
   border-radius: 24px;
-  border: 0.5px solid #ffffff;
+  border: 0.5px solid #14274e;
   height: 2.9rem;
   margin: 1rem;
   padding: 1rem;
   &::placeholder {
     font-size: 1.1rem;
-    color: #ffffff;
+    color: #14274e;
   }
 `;
 const AddTask = () => {
