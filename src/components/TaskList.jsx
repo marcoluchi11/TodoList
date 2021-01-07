@@ -6,9 +6,12 @@ import { TodoContext } from "./../context/TodoContext";
 import fire from "./../firebaseConfig";
 const ItemTarea = styled.div`
   display: flex;
+  background-color: #9ba4b4;
+  border-radius: 10px;
+  margin: 0.3rem;
 `;
 const ItemTareaTexto = styled.h4`
-  margin-right: 1rem;
+  padding: 0 1rem;
 `;
 const Boton = styled.button`
   margin: 0.5rem;
@@ -17,9 +20,11 @@ const Boton = styled.button`
 `;
 const TaskList = () => {
   const { listaTareas, setListaTareas, loading } = useContext(TodoContext);
-  const handleClick = (id, task) => {
-    const tasklist = listaTareas.filter((tarea) => id !== tarea.id);
 
+  const handleClick = (id, task) => {
+    //Filtra en la parte visual
+    const tasklist = listaTareas.filter((tarea) => id !== tarea.id);
+    //Elimina de la db
     const db = fire.firestore();
     db.collection("tareas")
       .get()
@@ -43,6 +48,7 @@ const TaskList = () => {
   return (
     <Fragment>
       <h1>Lista De Tareas</h1>
+      <hr />
       {loading ? (
         <Spinner />
       ) : (
