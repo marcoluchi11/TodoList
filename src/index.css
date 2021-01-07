@@ -7,15 +7,16 @@ html {
   box-sizing: inherit;
 }
 body {
-  color: #ffffff !important;
+  color: #14274e !important;
   box-sizing: border-box;
-  background-color: #222222;
+  background-color: #f1f6f9;
   font-family: "Andika New Basic", sans-serif;
 }
 .contenedor {
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .addTarea {
   display: flex;
   flex-direction: column;
