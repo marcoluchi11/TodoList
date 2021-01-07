@@ -4,10 +4,7 @@ export const TodoContext = createContext();
 
 const TodoProvider = (props) => {
   const [tareaNueva, setTareaNueva] = useState({ tarea: "" });
-  const [listaTareas, setListaTareas] = useState(() => {
-    const listovich = localStorage.getItem("listatareas");
-    return listovich ? JSON.parse(listovich) : [];
-  });
+  const [listaTareas, setListaTareas] = useState([]);
 
   const [user, setUser] = useState("");
   const [registrado, setRegistrado] = useState(false);
