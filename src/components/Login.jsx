@@ -124,19 +124,6 @@ const Login = () => {
     setListaTareas([]);
   };
 
-  // const authListener = () => {
-  //   fire.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       clearInputs();
-  //       setUser(user);
-  //     } else {
-  //       setUser("");
-  //     }
-  //   });
-  // };
-  // useEffect(() => {
-  //   //   authListener();
-  // }, []);
   return (
     <Fragment>
       {login ? (
