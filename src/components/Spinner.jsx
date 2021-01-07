@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./Spinner.css";
 import styled from "@emotion/styled";
 const Container = styled.div`
