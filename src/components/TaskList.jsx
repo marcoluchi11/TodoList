@@ -48,7 +48,6 @@ const TaskList = () => {
   return (
     <Fragment>
       <h1>Lista De Tareas</h1>
-      <hr />
       {loading ? (
         <Spinner />
       ) : (
