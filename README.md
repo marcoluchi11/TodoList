@@ -1,9 +1,3 @@
-Projecto Todo App para practicar React.
+Projecto Todo App hecho con React, y manejo de base de datos y Hosting con Firebase
 
 Link al proyecto: https://crealistatareas.web.app/
-
-# VER AUTENTICACION DE USUARIOS , FIREBASE ? ACCESO A DB
-
-# AL ACCEDER, VAYA BUSQUE LA DATABSE ASOCIADA A ESE USUARIO, Y LE DEVUELVA SUS DATOS.
-
-# PUEDE SER USUARIO Y CONTRASENA , O DIRECTAMENTE CON GOOGLE O FACEBOOK.
