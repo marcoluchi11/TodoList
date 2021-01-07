@@ -6,8 +6,8 @@ const Label = styled.label`
   margin: 1rem;
 `;
 const Ingresar = styled.input`
-  background-color: #eaeaea;
-  color: black;
+  background-color: #14274e;
+  color: #f1f6f9;
   margin: 1rem;
   padding: 0.5rem;
   border: none;
@@ -35,7 +35,7 @@ const Linkovich = styled.a`
   text-decoration: underline;
   margin: 0 0.6rem;
   cursor: pointer;
-  color: #ffffff;
+  color: #14274e;
   &:hover {
     text-decoration: underline;
   }
