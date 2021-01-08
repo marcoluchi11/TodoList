@@ -16,7 +16,7 @@ const BotonSubmit = styled.input`
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-left: 1rem;
+
   margin-bottom: 3rem;
   margin-top: 0.3rem;
   width: 100%;
@@ -27,7 +27,7 @@ const Input = styled.input`
   border-radius: 24px;
   border: 0.5px solid #14274e;
   height: 2.9rem;
-  margin: 1rem;
+  margin: 0.8rem 0;
   padding: 1rem;
   &::placeholder {
     font-size: 1.1rem;

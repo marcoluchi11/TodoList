@@ -22,11 +22,11 @@ const ErrorMsg = styled.p`
   background-color: #eaeaea2b;
 `;
 const RegistroMsg = styled.div`
-  color: #ffffff;
+  color: #f1f6f9;
   font-size: 16px;
   padding: 0.6rem;
   border-radius: 10px;
-  background-color: #28cc20;
+  background-color: #14274e;
 `;
 const Input = styled.input`
   border-radius: 10px;
